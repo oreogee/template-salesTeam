@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <title>메인</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // function checkLoginData() {
+            //     console.log("checkLoginData");
+            //     var data = {};
+            //     data.ID = $("input[name='email']")[0].value;
+            //     data.PASS = $("input[name='password']")[0].value;
+            //     // data = JSON.stringify(data);
+            //     // $.ajax({
+            //     // 	url : '/session',
+            //     // 	type : 'post',
+            //     // 	data : data,
+            //     // 	success : function(data) {
+            //     // 		location.href = 'console.html';
+            //     // 	},
+            //     // 	fail : function(data) {
+            //     // 		alert("로그인 실패!!");
+            //     //         return false;
+            //     // 	}
+            //     //
+            //     // });
+            //         console.log(data.ID+" "+data.PASS);
+            //         return false;
+            // };
+            $('#loginForm').submit(function(){
+                    var data = {};
+                    data.ID = $("input[name='email']")[0].value;
+                    data.PASS = $("input[name='password']")[0].value;
+                    console.log("입력정보 확인>> "+data.ID+" "+data.PASS);
+                    data = JSON.stringify(data);
+                    $.ajax({
+                    	url : '/session',
+                    	type : 'post',
+                    	data : data,
+                    	success : function(data) {
+                    		// return true는 안써줘도 됨
+                    	},
+                    	fail : function(data) {
+                    		alert("로그인 실패!! 아이디 비번 확인~");
+                            return false;
+                    	}
+
+                    });
+            });
+        });
+    </script>
+</head>
+
+<body class="index-page">
+
+    <div class="wrapper container-fluid">
+        <h1>INDEX</h1>
+        <form id="loginForm" class="form-signin" action="./customerList.html" method="post" >
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <!-- <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div> -->
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Sign in">
+        </form>
+    </div>
+    <script>
+
+    </script>
+</body>
+
+</html>
