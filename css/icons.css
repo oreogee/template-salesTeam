@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'sales_icons';
+  src:  url('../fonts/sales_icons.eot?at93c2');
+  src:  url('../fonts/sales_icons.eot?at93c2#iefix') format('embedded-opentype'),
+    url('../fonts/sales_icons.ttf?at93c2') format('truetype'),
+    url('../fonts/sales_icons.woff?at93c2') format('woff'),
+    url('../fonts/sales_icons.svg?at93c2#sales_icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'sales_icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-envelope:before {
+  content: "\f0e0";
+}
+.icon-user-plus:before {
+  content: "\f234";
+}
+.icon-user-times:before {
+  content: "\f235";
+}

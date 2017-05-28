@@ -16,6 +16,7 @@ html {
 .index-page h1 {
     margin: 100px 30px;
     text-align: center;
+    color: #fff;
 }
 .form-signin .form-control {
   position: relative;
