@@ -5,52 +5,65 @@
     <title>메인</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/icons.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js"></script>
 </head>
 
 <body class="index-page">
 
-    <div class="wrapper container-fluid">
+    <div class="wrapper">
         <h1 class="icon-envelope">&nbsp;SMS Service</h1>
-        <form id="loginForm" action="./customerList.html" class="form-signin" method="post" onsubmit="return loginCheck();">
-            <label for="inputEmail" class="sr-only">Email address</label>
-            <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
-            <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="inputPassword" name="pass" class="form-control" placeholder="Password" required>
-            <!-- <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label>
-            </div> -->
-            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Sign in">
+        <form id="loginForm" action="./customerList.html" method="post">
+            <fieldset>
+                <legend class="blind">로그인</legend>
+                <input class="inpupt-box" id="email" name="email" type="email" placeholder="이메일"/>
+                <input class="inpupt-box" id="pass" name="password" type="password"  placeholder="비밀번호"/>
+            </fieldset>
+            <br />
+            <input class="btn" type="submit" value="로그인">
         </form>
     </div>
     <script>
-        function loginCheck() {
-            var data = {};
-            data.email = $("#inputEmail")[0].value;
-            data.pass = $("#inputPassword")[0].value;
-            console.log("입력정보 확인>> "+data.email+" "+data.pass);
-            var dataString = JSON.stringify(data);
+        $("#loginForm").validate({
+            submitHandler : function() {
+                var data = {};
+                data.email = $("#email")[0].value;
+                data.pass = $("#pass")[0].value;
+                console.log("입력정보 확인>> "+data.email+" "+data.pass);
+                var dataString = JSON.stringify(data);
 
-            // 로그인 정보 확인할 부분
-            // $.ajax({
-            // 	url : '/session',
-            // 	type : 'post',
-            // 	data : dataString,
-            // 	success : function(data) {
-            //         alert("로그인 성공!!");
-            // 	},
-            // 	fail : function(data) {
-            // 		alert("로그인 실패!! 아이디 비번 확인~");
-            //         return false;
-            // 	}
-            // });
-        }
+                // 로그인 정보 확인할 부분
+                // $.ajax({
+                // 	url : '/session',
+                // 	type : 'post',
+                // 	data : dataString,
+                // 	success : function(data) {
+                //         alert("로그인 성공!!");
+                // 	},
+                // 	fail : function(data) {
+                // 		alert("로그인 실패!! 아이디 비번 확인~");
+                //         return false;
+                // 	}
+                // });
+
+                return true;
+            },
+            rules : {
+                email : {
+                    required : true,
+                    email : true
+                },
+                password : {
+                    required : true
+                }
+            },
+            messages : {
+                email : "유효한 이메일을 입력해주세요",
+                password : "비밀번호를 입력해주세요"
+            }
+        });
     </script>
 </body>
 

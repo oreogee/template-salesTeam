@@ -5,52 +5,109 @@
     <title>목록조회</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/icons.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function(){
             $('#customerTable').DataTable( {
-                "ajax": "data/objects.txt",
-                "columns": [
-                    { "data": "name" },
-                    { "data": "position" },
-                    { "data": "office" },
-                    { "data": "extn" },
-                    { "data": "start_date" },
-                    { "data": "salary" }
-                ]
+                // 테이블 데이터를 가져올 부분
+                // "ajax": "/customer",
+                // "columns": [
+                //     { "data": "name" },
+                //     { "data": "phone" },
+                //     { "data": "company" },
+                //     { "data": "start_date" }
+                // ],
+                "oLanguage" : {
+                    "sProcessing" : "처리중...",
+                    "sZeroRecords" : "데이터가 없습니다.",
+                    "sLengthMenu" : " _MENU_ 건 표시",
+                    "oPaginate" : {
+                        "sFirst" : "처음",
+                        "sNext" : "다음 페이지",
+                        "sPrevious" : "이전 페이지",
+                        "sLast" : "끝"
+                    },
+                    "sSearch" : "검색"
+                },
+                "info": false
             } );
         })
     </script>
 </head>
 
-<body>
-    <table id="customerTable" class="display" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Extn.</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Extn.</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </tfoot>
-    </table>
+<body class="joinshow-page">
+    <h1 class="blind">회원 가입 및 조회</h1>
+    <h2 class="icon-user-plus">&nbsp;고객 가입</h2>
+    <div class="hide">
+        <form id="joinForm" action="#" method="post">
+            <fieldset>
+                <legend class="blind">회원가입</legend>
+                <input class="inpupt-box" name="name" type="text" placeholder="성명"/>
+                <input class="inpupt-box" name="phone" type="text"  placeholder="전화번호"/>
+                <input class="inpupt-box" name="company" type="text"  placeholder="회사명"/>
+                <input class="blind" name="start_date" type="text"/>
+            </fieldset>
+            <br />
+            <input class="btn" type="submit" value="신규 회원 생성">
+        </form>
+    </div>
+    <h2>&nbsp;고객 조회</h2>
+    <div class="hide">
+        <table id="customerTable" class="display" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>이름</th>
+                    <th>전화번호</th>
+                    <th>회사명</th>
+                    <th>가입날짜</th>
+                </tr>
+            </thead>
+            <!-- <tfoot>
+                <tr>
+                    <th>이름</th>
+                    <th>전화번호</th>
+                    <th>회사명</th>
+                    <th>가입날짜</th>
+                </tr>
+            </tfoot> -->
+        </table>
+    </div>
+    <script>
+        $("#joinForm").validate({
+            rules : {
+                name : {
+                    required : true
+                },
+                phone : {
+                    required : true,
+                    minlength : 10,
+                    maxlength : 12,
+                    digits: true
+                },
+                company : {
+                    required : true,
+                }
+            },
+            messages : {
+                name : "사용자 이름을 입력해주세요.",
+                phone : {
+                    required : "앱을 사용할 핸드폰 번호를 입력해주세요.",
+                    minlength : "핸드폰 번호를 정확히 입력해주세요",
+                    maxlength : "핸드폰 번호를 정확히 입력해주세요",
+                    digits : "숫자만 입력 가능합니다."
+                },
+                company : "회사명을 입력해주세요."
+            }
+        });
+        $("#joinForm").find("input[name='start_date']").attr('value', new Date());
+    </script>
 </body>
 
 </html>

@@ -3,10 +3,40 @@
 html {
     height: 100%;
 }
-.wrapper {
-    max-width: 500px;
+/* reset */
+fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
 }
-.index-page {
+body {
+    margin: 0;
+    color: #fff;
+}
+h1,
+h2 {
+    margin: 0;
+}
+
+/* common */
+.blind{
+  visibility: hidden;
+  overflow: hidden;
+  position: absolute;
+  top:0;
+  left:0;
+  width:1px;
+  height:1px;
+  font-size:0;
+  line-height: 0;
+}
+
+.wrapper {
+    max-width: 400px;
+    margin: 0 auto;
+}
+.index-page,
+.joinshow-page {
     background: #4568dc; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(#4568dc, #b06ab3); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(#4568dc, #b06ab3); /* For Opera 11.1 to 12.0 */
@@ -18,36 +48,72 @@ html {
     text-align: center;
     color: #fff;
 }
-.form-signin .form-control {
-  position: relative;
-  height: auto;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 10px;
-  font-size: 16px;
+
+#loginForm {
+    text-align: center;
 }
-.form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+#loginForm label.error {
+    display: block;
+    margin-top: 10px;
+    color: #d3d3d3;
 }
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+
+.joinshow-page h2 {
+    margin: 40px 20px;
 }
-.form-signin .form-control:focus {
-    z-index: 2;
+#joinForm {
+    max-width: 300px;
+    padding: 10px 30px;
+    border-radius: 10px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, .4);
 }
-.btn-primary {
+#joinForm fieldset {
+    text-align: center;
+}
+.inpupt-box {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+.inpupt-box:focus {
+    outline: none;
+}
+.btn {
+    width: 100%;
+    padding: 10px;
     border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #fff;
     background-color: rgba(69, 104, 220, .7);
-    font-weight: normal;
     cursor: pointer;
 }
-.btn-primary:hover {
+.btn:hover {
     background-color: #2547b9;
+}
+
+#joinForm label.error {
+    display: block;
+    margin-top: 10px;
+    color: #bf0000;
+}
+
+#customerTable_wrapper {
+    padding: 20px 10px 10px;
+    border-radius: 10px;
+    margin: 0 20px;
+    color: #000;
+    background-color: rgba(255, 255, 255, .4);
+}
+
+.hide {
+    /*height: 0;
+    overflow: hidden;*/
 }
 
 @media ( max-width : 768px) {
@@ -55,5 +121,15 @@ html {
         width: 100%;
         padding: 0 10px;
         box-sizing: border-box;
+    }
+    #joinForm,
+    #customerTable_wrapper {
+        width: 100%;
+        margin: 0;
+        max-width: none;
+        box-sizing: border-box;
+    }
+    #customerTable_wrapper {
+        padding: 0 5px;
     }
 }
