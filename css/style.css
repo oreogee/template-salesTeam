@@ -30,6 +30,19 @@ h2 {
   font-size:0;
   line-height: 0;
 }
+.btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #fff;
+    background-color: rgba(69, 104, 220, .7);
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: #2547b9;
+}
 
 .wrapper {
     max-width: 400px;
@@ -48,7 +61,6 @@ h2 {
     text-align: center;
     color: #fff;
 }
-
 #loginForm {
     text-align: center;
 }
@@ -83,37 +95,17 @@ h2 {
 .inpupt-box:focus {
     outline: none;
 }
-.btn {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    color: #fff;
-    background-color: rgba(69, 104, 220, .7);
-    cursor: pointer;
-}
-.btn:hover {
-    background-color: #2547b9;
-}
-
 #joinForm label.error {
     display: block;
     margin-top: 10px;
     color: #bf0000;
 }
-
 #customerTable_wrapper {
     padding: 20px 10px 10px;
     border-radius: 10px;
     margin: 0 20px;
     color: #000;
     background-color: rgba(255, 255, 255, .4);
-}
-
-.hide {
-    /*height: 0;
-    overflow: hidden;*/
 }
 
 @media ( max-width : 768px) {
